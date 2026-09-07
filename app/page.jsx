@@ -23,11 +23,7 @@ export default function Home() {
           transform a product into positioning, content, WhatsApp
           conversations, follow-ups and a practical sales strategy.
         </p>
-
-  
-        
-            
-
+        <div className="buttons">
           <a
   href="https://paystack.com/buy/snapsell--ai-sales-command-center-nultnw"
   className="primaryButton"
