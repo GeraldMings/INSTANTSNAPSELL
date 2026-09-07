@@ -169,8 +169,8 @@ export default function Home() {
         <strong>SNAPSELL™</strong>
         <span>AI Sales Command Center</span>
         <span>Created by Geestablish</span>
-      </footer>
-      <span>
+    
+        <span>
   Customer Support:{" "}
   <a href="mailto:geemingle15@gmail.com">geemingle15@gmail.com</a>
 </span>
