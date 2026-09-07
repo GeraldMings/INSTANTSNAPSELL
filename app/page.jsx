@@ -170,6 +170,18 @@ export default function Home() {
         <span>AI Sales Command Center</span>
         <span>Created by Geestablish</span>
       </footer>
+      <span>
+  Customer Support:{" "}
+  <a href="mailto:geemingle15@gmail.com">geemingle15@gmail.com</a>
+</span>
+
+<span>
+  <a href="mailto:geestablish@gmail.com">geestablish@gmail.com</a>
+</span>
+
+<span>
+  <a href="tel:+233534671381">+233 534 671 381</a>
+</span>
     </main>
   );
             }
