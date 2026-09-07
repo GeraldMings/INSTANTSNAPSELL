@@ -1,282 +1,167 @@
-"use client";
-
-import { useState } from "react";
-
-const modes = [
-  ["Full Campaign", "Complete sales system"],
-  ["Product Analyzer", "Find the strongest angle"],
-  ["WhatsApp Closer", "Replies and follow-ups"],
-  ["Content Machine", "Hooks, posts and CTAs"]
-];
+import Link from "next/link";
 
 export default function Home() {
-  const [mode, setMode] = useState("Full Campaign");
-  const [product, setProduct] = useState("");
-  const [audience, setAudience] = useState("");
-  const [price, setPrice] = useState("");
-  const [goal, setGoal] = useState("");
-  const [result, setResult] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  async function generate() {
-    if (!product.trim()) {
-      setError("Please enter your product information.");
-      return;
-    }
-
-    setLoading(true);
-    setError("");
-    setResult("");
-
-    try {
-      const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          mode,
-          product,
-          audience,
-          price,
-          goal
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Generation failed.");
-      }
-
-      setResult(data.output);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function copyResult() {
-    await navigator.clipboard.writeText(result);
-  }
-
   return (
-    <main className="app">
-      <header className="topbar">
-        <div className="brand">
-          <span>GE</span>
-          GEESTABLISH
-        </div>
-
-        <div className="logo">
-          SNAPSELL™
-        </div>
-      </header>
+    <main>
+      <nav className="nav">
+        <div className="logo">GEESTABLISH</div>
+        <Link href="/app" className="navButton">
+          Open SnapSell™
+        </Link>
+      </nav>
 
       <section className="hero">
-        <p className="eyebrow">
-          BY GEESTABLISH · AI SALES COMMAND CENTER
-        </p>
+        <div className="eyebrow">BY GEESTABLISH</div>
 
         <h1>
-          Turn a product into
-          <br />
-          <em>a sales system.</em>
+          Turn Any Product Into a
+          <span> Sales System.</span>
         </h1>
 
-        <p className="subtitle">
-          Snap. Analyze. Position. Create. Converse. Close. Improve.
+        <p className="heroText">
+          SnapSell™ is an AI-powered sales command center that helps you
+          transform a product into positioning, content, WhatsApp
+          conversations, follow-ups and a practical sales strategy.
+        </p>
+
+        <div className="buttons">
+          <Link href="/app" className="primaryButton">
+            Get Started →
+          </Link>
+
+          <a href="#how" className="secondaryButton">
+            See How It Works
+          </a>
+        </div>
+
+        <p className="smallText">
+          SNAP → ANALYZE → POSITION → CREATE → CONVERSE → CLOSE → IMPROVE
         </p>
       </section>
 
-      <section className="workspace">
+      <section className="section" id="how">
+        <div className="sectionLabel">THE ENGINE</div>
+        <h2>One product. One intelligent sales system.</h2>
 
-        <div className="panel">
-
-          <div className="panelHeader">
-            <div>
-              <p className="eyebrow">01 · INPUT</p>
-              <h2>Feed the engine.</h2>
-            </div>
-
-            <span className="status">
-              ● READY
-            </span>
+        <div className="steps">
+          <div>
+            <b>01 — SNAP</b>
+            <p>Give SnapSell™ the information about your product.</p>
           </div>
 
-          <label>ENGINE MODE</label>
-
-          <div className="modes">
-
-            {modes.map(([name, description]) => (
-              <button
-                key={name}
-                className={
-                  mode === name
-                    ? "mode active"
-                    : "mode"
-                }
-                onClick={() => setMode(name)}
-              >
-                <strong>{name}</strong>
-                <small>{description}</small>
-              </button>
-            ))}
-
+          <div>
+            <b>02 — ANALYZE</b>
+            <p>Understand your customer, their problem and their desire.</p>
           </div>
 
-          <label>
-            PRODUCT INFORMATION *
-          </label>
-
-          <textarea
-            value={product}
-            onChange={(e) =>
-              setProduct(e.target.value)
-            }
-            placeholder="Describe what you are selling. Include features, benefits, price, delivery, bonuses, proof and anything else customers should know."
-          />
-
-          <div className="grid">
-
-            <div>
-              <label>
-                TARGET CUSTOMER
-              </label>
-
-              <input
-                value={audience}
-                onChange={(e) =>
-                  setAudience(e.target.value)
-                }
-                placeholder="Who is this for?"
-              />
-            </div>
-
-            <div>
-              <label>
-                PRICE
-              </label>
-
-              <input
-                value={price}
-                onChange={(e) =>
-                  setPrice(e.target.value)
-                }
-                placeholder="e.g. $19.99"
-              />
-            </div>
-
+          <div>
+            <b>03 — POSITION</b>
+            <p>Find stronger ways to present your offer.</p>
           </div>
 
-          <label>
-            PRIMARY GOAL
-          </label>
+          <div>
+            <b>04 — CREATE</b>
+            <p>Generate hooks, posts, CTAs and sales content.</p>
+          </div>
 
-          <input
-            value={goal}
-            onChange={(e) =>
-              setGoal(e.target.value)
-            }
-            placeholder="e.g. Get my first 20 sales"
-          />
+          <div>
+            <b>05 — CONVERSE</b>
+            <p>Build natural sales conversations and objection responses.</p>
+          </div>
 
-          {error && (
-            <div className="error">
-              {error}
-            </div>
-          )}
+          <div>
+            <b>06 — CLOSE</b>
+            <p>Create practical closing and follow-up sequences.</p>
+          </div>
 
-          <button
-            className="generate"
-            onClick={generate}
-            disabled={loading}
-          >
-            {loading
-              ? "BUILDING YOUR SALES SYSTEM..."
-              : "GENERATE SALES SYSTEM →"}
-          </button>
+          <div>
+            <b>07 — IMPROVE</b>
+            <p>Track what matters and continuously improve your selling.</p>
+          </div>
+        </div>
+      </section>
 
+      <section className="darkSection">
+        <div className="sectionLabel">WHAT YOU CAN CREATE</div>
+        <h2>More than content generation.</h2>
+
+        <div className="featureGrid">
+          <div className="feature">AI Product Analysis</div>
+          <div className="feature">Sales Positioning</div>
+          <div className="feature">Sales Hooks</div>
+          <div className="feature">Social Media Content</div>
+          <div className="feature">WhatsApp Sales Scripts</div>
+          <div className="feature">Objection Responses</div>
+          <div className="feature">Follow-Up Sequences</div>
+          <div className="feature">Sales Action Plans</div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="sectionLabel">BUILT FOR SELLERS</div>
+        <h2>Made for people who actually have something to sell.</h2>
+
+        <div className="audience">
+          <p>✓ Digital product creators</p>
+          <p>✓ Online sellers</p>
+          <p>✓ Entrepreneurs</p>
+          <p>✓ Coaches and service providers</p>
+          <p>✓ Social-media sellers</p>
+          <p>✓ WhatsApp businesses</p>
+        </div>
+      </section>
+
+      <section className="offer">
+        <div className="sectionLabel">SNAPSELL™ BY GEESTABLISH</div>
+
+        <h2>Stop wondering what to post, say or sell next.</h2>
+
+        <p>
+          Put your product into SnapSell™ and turn your ideas into a
+          structured sales system you can actually execute.
+        </p>
+
+        <Link href="/app" className="primaryButton">
+          Enter SnapSell™ →
+        </Link>
+      </section>
+
+      <section className="faq">
+        <div className="sectionLabel">FAQ</div>
+
+        <h2>Questions?</h2>
+
+        <div className="faqItem">
+          <b>What is SnapSell™?</b>
+          <p>
+            SnapSell™ is an AI-powered sales command center created by
+            Geestablish to help sellers develop practical sales strategies
+            and marketing assets from their product information.
+          </p>
         </div>
 
-        <div className="panel output">
-
-          <div className="panelHeader">
-
-            <div>
-              <p className="eyebrow">
-                02 · OUTPUT
-              </p>
-
-              <h2>
-                Sales intelligence.
-              </h2>
-            </div>
-
-            {result && (
-              <button
-                className="copy"
-                onClick={copyResult}
-              >
-                COPY
-              </button>
-            )}
-
-          </div>
-
-          {!result && !loading && (
-            <div className="empty">
-
-              <div className="mark">
-                SS
-              </div>
-
-              <h3>
-                Your campaign appears here.
-              </h3>
-
-              <p>
-                Give SnapSell the product.
-                The engine builds the strategy
-                and execution.
-              </p>
-
-            </div>
-          )}
-
-          {loading && (
-            <div className="empty">
-
-              <div className="loader"></div>
-
-              <h3>
-                SnapSell is thinking.
-              </h3>
-
-              <p>
-                Analyzing your offer and
-                building your sales system.
-              </p>
-
-            </div>
-          )}
-
-          {result && (
-            <pre className="result">
-              {result}
-            </pre>
-          )}
-
+        <div className="faqItem">
+          <b>Does SnapSell™ guarantee sales?</b>
+          <p>
+            No. SnapSell™ provides strategies and content. Results depend
+            on the product, market, execution and many other factors.
+          </p>
         </div>
 
+        <div className="faqItem">
+          <b>Can I use it for different products?</b>
+          <p>
+            Yes. You can use the system to develop sales strategies for
+            different products, services and offers.
+          </p>
+        </div>
       </section>
 
       <footer>
-        SNAPSELL™ · BY GEESTABLISH
+        <strong>SNAPSELL™</strong>
+        <span>AI Sales Command Center</span>
+        <span>Created by Geestablish</span>
       </footer>
-
     </main>
   );
-                }
+            }
