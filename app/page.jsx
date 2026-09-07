@@ -28,6 +28,14 @@ export default function Home() {
           <Link href="/app" className="primaryButton">
             Get Started →
           </Link>
+          <a
+  href="https://paystack.com/buy/snapsell--ai-sales-command-center-nultnw"
+  className="primaryButton"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Get SnapSell™ — $18 →
+</a>
 
           <a href="#how" className="secondaryButton">
             See How It Works
