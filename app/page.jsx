@@ -24,10 +24,10 @@ export default function Home() {
           conversations, follow-ups and a practical sales strategy.
         </p>
 
-        <div className="buttons">
-          <Link href="/app" className="primaryButton">
-            Get Started →
-          </Link>
+  
+        
+            
+
           <a
   href="https://paystack.com/buy/snapsell--ai-sales-command-center-nultnw"
   className="primaryButton"
