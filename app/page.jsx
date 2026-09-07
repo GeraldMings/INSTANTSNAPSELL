@@ -180,6 +180,8 @@ export default function Home() {
 <span>
   <a href="tel:+233534671381">+233 534 671 381</a>
 </span>
-    </main>
+</footer>
+      
+  </main>
   );
             }
